@@ -35,3 +35,6 @@ lerna-debug.log*
 
 # env
 /.env
+
+# TypeORM config(ormconfig will be generated before running the typeORM CLI commands.)
+/ormconfig.json

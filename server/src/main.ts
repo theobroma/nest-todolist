@@ -5,6 +5,7 @@ import { configService } from './config/config.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
 
   if (!configService.isProduction()) {
     const document = SwaggerModule.createDocument(
@@ -14,8 +15,8 @@ async function bootstrap() {
         .setDescription('My Item API')
         .build(),
     );
-    // set URL - 'localhost:3000/api/'
-    http: SwaggerModule.setup('api', app, document);
+    // set URL - 'localhost:3000/${prefix}'
+    http: SwaggerModule.setup('apiui', app, document);
   }
 
   await app.listen(3000);

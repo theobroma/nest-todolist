@@ -19,6 +19,6 @@ async function bootstrap() {
     http: SwaggerModule.setup('apiui', app, document);
   }
 
-  await app.listen(3000);
+  await app.listen(5000);
 }
 bootstrap();

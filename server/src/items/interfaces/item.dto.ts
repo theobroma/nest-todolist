@@ -5,7 +5,7 @@ export class ItemDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  readonly id: string;
+  readonly id: number;
   @ApiProperty()
   @IsString()
   @IsNotEmpty()

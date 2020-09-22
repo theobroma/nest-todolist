@@ -7,4 +7,11 @@ export class ItemRepository extends Repository<Item> {
   createItem = async (itemDto: CreateItemDto) => {
     return await this.save(itemDto);
   };
+  removeItem = async (id: number) => {
+    await this.findOneOrFail(id);
+    return this.delete(id);
+  };
+  updateItem = async (id: number, itemDto: CreateItemDto) => {
+    return this.save({ ...itemDto, id: Number(id) });
+  };
 }

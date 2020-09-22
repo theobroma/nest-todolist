@@ -1,5 +1,13 @@
-import { ItemsService } from './items.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+// import { ItemsService } from './items.service';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateItemDto, ItemType } from './interfaces/item.dto';
@@ -29,8 +37,18 @@ export class ItemsController {
     description: 'The record has been successfully created.',
   })
   @ApiResponse({ status: 400, description: 'Invalid request.' })
-  create(@Body() data: CreateItemDto) {
-    return this.itemRepository.createItem(data);
+  create(@Body() itemDto: CreateItemDto) {
+    return this.itemRepository.createItem(itemDto);
     // return this.itemsService.create(data);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: number) {
+    return this.itemRepository.removeItem(id);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: number, @Body() itemDto: CreateItemDto) {
+    return this.itemRepository.updateItem(id, itemDto);
   }
 }

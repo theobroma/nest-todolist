@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, IsBoolean } from 'class-validator';
 
-export class ItemDto {
+export class CreateItemDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
@@ -14,4 +14,10 @@ export class ItemDto {
   @IsBoolean()
   @IsNotEmpty()
   readonly completed: boolean;
+}
+
+export interface ItemType {
+  id: number;
+  text: string;
+  completed: boolean;
 }

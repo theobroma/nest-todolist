@@ -6,7 +6,10 @@ import { configService } from './config/config.service';
 import { ItemsModule } from './items/items.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(configService.getTypeOrmConfig()), ItemsModule],
+  imports: [
+    TypeOrmModule.forRoot(configService.getTypeOrmConfig()),
+    ItemsModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

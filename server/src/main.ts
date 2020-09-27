@@ -12,8 +12,8 @@ async function bootstrap() {
     const document = SwaggerModule.createDocument(
       app,
       new DocumentBuilder()
-        .setTitle('Item API')
-        .setDescription('My Item API')
+        .setTitle('Todos Item API')
+        .setDescription('My Item API for todo-list')
         .build(),
     );
     // set URL - 'localhost:3000/${prefix}'

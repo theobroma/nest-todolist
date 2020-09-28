@@ -1,18 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { ItemType } from './interfaces/item.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Item } from './items.entity';
+import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 
 @Injectable()
-export class ItemsService {
-  private readonly items: ItemType[] = [];
-  //   private readonly items: ItemType[] = [
-  //     { id: 1, text: 'task1', completed: false },
-  //   ];
-
-  create(item: ItemType) {
-    this.items.push(item);
-  }
-
-  findAll(): ItemType[] {
-    return this.items;
+export class ItemsService extends TypeOrmCrudService<Item> {
+  constructor(@InjectRepository(Item) itemRepository) {
+    super(itemRepository);
   }
 }
